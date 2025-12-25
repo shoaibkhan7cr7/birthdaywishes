@@ -34,7 +34,6 @@ function App() {
   const [showFireworks, setShowFireworks] = useState(false);
   const [micAllowed, setMicAllowed] = useState<boolean | null>(null);
   const [floatingWishes, setFloatingWishes] = useState<FloatingWish[]>([]);
-  const [isWishActive, setIsWishActive] = useState(false);
   const commentSoundSrc = `${import.meta.env.BASE_URL}assets/instagram.mp3`;
   
   const blowDetector = useRef(new BlowDetector());
@@ -91,8 +90,8 @@ function App() {
     if (!isCandleBlown) {
         // If not blown, click acts as blow
         handleAction();
-    } else if (!isCelebrationActive && !isWishActive) {
-        setIsWishActive(true);
+    } else if (!isCelebrationActive) {
+        // Allow multiple wishes simultaneously after celebration
         // Only allow wishes AFTER the 20s celebration is over
         
         // Calculate position AROUND the cake
@@ -131,7 +130,6 @@ function App() {
         // Remove this specific wish after 4 seconds
         setTimeout(() => {
             setFloatingWishes(prev => prev.filter(w => w.id !== newWish.id));
-            setIsWishActive(false);
         }, 4000);
     }
   };
