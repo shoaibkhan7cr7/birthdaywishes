@@ -34,9 +34,13 @@ function App() {
   const [showFireworks, setShowFireworks] = useState(false);
   const [micAllowed, setMicAllowed] = useState<boolean | null>(null);
   const [floatingWishes, setFloatingWishes] = useState<FloatingWish[]>([]);
+  const [nextWishIndex, setNextWishIndex] = useState(0);
+  const [isWishActive, setIsWishActive] = useState(false);
+  const commentSoundSrc = `${import.meta.env.BASE_URL}assets/instagram.mp3`;
   
   const blowDetector = useRef(new BlowDetector());
   const containerRef = useRef<HTMLDivElement>(null);
+  const commentSoundRef = useRef<HTMLAudioElement | null>(null);
 
   // Initialize Microphone & Audio
   useEffect(() => {
@@ -51,12 +55,14 @@ function App() {
       }
     };
     initMic();
+    commentSoundRef.current = new Audio(commentSoundSrc);
+    commentSoundRef.current.preload = 'auto';
     
 
     return () => {
       blowDetector.current.stop();
     };
-  }, []);
+  }, [commentSoundSrc]);
 
   // Main interaction handler
   const handleAction = () => {
@@ -80,7 +86,8 @@ function App() {
     if (!isCandleBlown) {
         // If not blown, click acts as blow
         handleAction();
-    } else if (!isCelebrationActive) {
+    } else if (!isCelebrationActive && !isWishActive) {
+        setIsWishActive(true);
         // Only allow wishes AFTER the 20s celebration is over
         
         // Calculate position AROUND the cake
@@ -102,20 +109,25 @@ function App() {
         
         const newWish: FloatingWish = {
             id: Date.now(),
-            text: WISHES[Math.floor(Math.random() * WISHES.length)],
+            text: WISHES[nextWishIndex],
             x, 
             y,
             rotation: (Math.random() - 0.5) * 10
         };
 
         setFloatingWishes(prev => [...prev, newWish]);
+        setNextWishIndex((prev) => (prev + 1) % WISHES.length);
         
         // Play Pop Sound
-        new Audio('/assets/instagram.mp3').play().catch(() => {});
+        if (commentSoundRef.current) {
+            commentSoundRef.current.currentTime = 0;
+            commentSoundRef.current.play().catch(() => {});
+        }
 
         // Remove this specific wish after 4 seconds
         setTimeout(() => {
             setFloatingWishes(prev => prev.filter(w => w.id !== newWish.id));
+            setIsWishActive(false);
         }, 4000);
     }
   };
