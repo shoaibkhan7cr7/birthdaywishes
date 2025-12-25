@@ -34,13 +34,18 @@ function App() {
   const [showFireworks, setShowFireworks] = useState(false);
   const [micAllowed, setMicAllowed] = useState<boolean | null>(null);
   const [floatingWishes, setFloatingWishes] = useState<FloatingWish[]>([]);
-  const [nextWishIndex, setNextWishIndex] = useState(0);
   const [isWishActive, setIsWishActive] = useState(false);
   const commentSoundSrc = `${import.meta.env.BASE_URL}assets/instagram.mp3`;
   
   const blowDetector = useRef(new BlowDetector());
   const containerRef = useRef<HTMLDivElement>(null);
   const commentSoundRef = useRef<HTMLAudioElement | null>(null);
+  const nextWishIndexRef = useRef(0);
+  const getNextWishText = () => {
+    const text = WISHES[nextWishIndexRef.current];
+    nextWishIndexRef.current = (nextWishIndexRef.current + 1) % WISHES.length;
+    return text;
+  };
 
   // Initialize Microphone & Audio
   useEffect(() => {
@@ -109,14 +114,13 @@ function App() {
         
         const newWish: FloatingWish = {
             id: Date.now(),
-            text: WISHES[nextWishIndex],
+            text: getNextWishText(),
             x, 
             y,
             rotation: (Math.random() - 0.5) * 10
         };
 
         setFloatingWishes(prev => [...prev, newWish]);
-        setNextWishIndex((prev) => (prev + 1) % WISHES.length);
         
         // Play Pop Sound
         if (commentSoundRef.current) {
