@@ -10,6 +10,7 @@ interface CakeProps {
 
 export const Cake: React.FC<CakeProps> = ({ isCandleBlown, onInteract, micPermissionDenied }) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const birthdaySongSrc = `${import.meta.env.BASE_URL}assets/happy-birthday-314197.mp3`;
   const [smoke, setSmoke] = useState(false);
 
   useEffect(() => {
@@ -42,7 +43,7 @@ export const Cake: React.FC<CakeProps> = ({ isCandleBlown, onInteract, micPermis
 
   return (
     <>
-      <audio ref={audioRef} src="/assets/happy-birthday-314197.mp3" />
+      <audio ref={audioRef} src={birthdaySongSrc} />
     <div className="relative flex flex-col items-center justify-center mt-4 transition-transform duration-1000">
       
       {/* Interaction Hint: Cinematic Style */}

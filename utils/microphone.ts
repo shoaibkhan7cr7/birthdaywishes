@@ -51,9 +51,9 @@ export class BlowDetector {
 
     // Thresholds
     // Increased threshold to 135 (out of 255) to ignore normal speaking volume
-    const BLOW_THRESHOLD = 160; 
+    const BLOW_THRESHOLD = 150; 
     // Increased required frames to 20 (approx 300ms @ 60fps) to ensure it's a sustained breath, not a sharp noise
-    const REQUIRED_FRAMES = 25; 
+    const REQUIRED_FRAMES = 20; 
 
     if (averageVolume > BLOW_THRESHOLD) {
         this.blowConsistencyCount++;

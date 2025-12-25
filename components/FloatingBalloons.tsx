@@ -22,6 +22,7 @@ interface Balloon {
 
 export const FloatingBalloons: React.FC<{ generating: boolean }> = ({ generating }) => {
   const popSoundRef = useRef<HTMLAudioElement | null>(null);
+  const popSoundSrc = `${import.meta.env.BASE_URL}assets/bubble_pop.mp3`;
   const [balloons, setBalloons] = useState<Balloon[]>([]);
 
   useEffect(() => {
@@ -64,7 +65,7 @@ export const FloatingBalloons: React.FC<{ generating: boolean }> = ({ generating
 
   return (
     <>
-      <audio ref={popSoundRef} src="/assets/bubble_pop.mp3" preload="auto" />
+      <audio ref={popSoundRef} src={popSoundSrc} preload="auto" />
       {/* pointer-events-none on container ensures clicks pass through to the cake underneath */}
       <div className="fixed inset-0 w-screen h-screen pointer-events-none z-[20] overflow-hidden">
         <AnimatePresence>
