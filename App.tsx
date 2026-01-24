@@ -17,7 +17,7 @@ const WISHES = [
   "Make a wish! 🌟",
   "Cheers! 🥂",
   "You glow differently! ✨",
-  "Sending love! ❤️"
+ 
 ];
 
 interface FloatingWish {
