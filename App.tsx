@@ -15,7 +15,7 @@ const WISHES = [
   "Stay awesome! 😎",
   "Enjoy your cake! 🍰",
   "Make a wish! 🌟",
-  "Cheers! 🥂",
+  "Allah bless u",
   "You glow differently! ✨",
  
 ];
