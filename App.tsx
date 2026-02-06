@@ -193,7 +193,7 @@ function App() {
             </motion.div>
             
             <h1 className="font-script text-5xl md:text-8xl text-transparent bg-clip-text bg-gradient-to-br from-white via-rose-100 to-indigo-100 drop-shadow-[0_4px_10px_rgba(255,255,255,0.3)] pb-2 px-4 leading-tight">
-           Happy Birthday, Vofra(Junglee sister)!
+           Happy Birthday, !
             </h1>
         </header>
 
