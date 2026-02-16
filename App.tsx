@@ -14,7 +14,7 @@ const WISHES = [
   "!Happy Birthday! 🎂
  "May your day be filled with smiles,          laughter,and everything you love.🥳",
   "Stay awesome! 😎",
-  "Enjoy your day! 🍰",
+  "Enjoy your day!🍰",
   "Make a wish! 🌟",
   "Allah bless u",
   "You glow differently! ✨",
