@@ -11,9 +11,10 @@ const WISHES = [
   "Happy Birthday! 🎂",
   "Have the best day! ✨",
   "So happy for you! 💖",
-  "Party time!! 🥳",
+  "!Happy Birthday! 🎂
+ "May your day be filled with smiles,          laughter, and everything you love. 🥳",
   "Stay awesome! 😎",
-  "Enjoy your cake! 🍰",
+  "Enjoy your day! 🍰",
   "Make a wish! 🌟",
   "Allah bless u",
   "You glow differently! ✨",
@@ -193,7 +194,7 @@ function App() {
             </motion.div>
             
             <h1 className="font-script text-5xl md:text-8xl text-transparent bg-clip-text bg-gradient-to-br from-white via-rose-100 to-indigo-100 drop-shadow-[0_4px_10px_rgba(255,255,255,0.3)] pb-2 px-4 leading-tight">
-           Happy Birthday, !
+      Happy Birthday, 💐BASRIYA💐(BASHU)!
             </h1>
         </header>
 
