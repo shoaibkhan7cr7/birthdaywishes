@@ -2,7 +2,7 @@
 
 A fun, interactive birthday card built with React, Vite, and Framer Motion. It features a birthday cake with a candle that can be blown out using a microphone, celebratory fireworks, and floating balloons that can be popped.
 
-## ✨ Features
+## ✨ Features.
 
 - **Interactive Cake**: A beautifully designed cake with a candle that can be blown out using your microphone.
 - **Celebration Effects**: Enjoy a dazzling fireworks display and floating balloons after making a wish.
