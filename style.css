@@ -73,41 +73,49 @@ a{
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 132px;
-    padding: 12px 22px;
-    border-radius: 14px;
+    min-width: 148px;
+    padding: 12px 20px;
+    border-radius: 999px;
     font-weight: 800;
     color: #fff;
     letter-spacing: .2px;
-    border: 1px solid rgba(255,255,255,.14);
+    border: 1px solid rgba(255,255,255,.18);
     background:
-      linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,.06)),
-      radial-gradient(120% 140% at 10% 0%, rgba(168,85,247,.55), transparent 60%),
-      radial-gradient(140% 140% at 90% 20%, rgba(59,130,246,.55), transparent 60%),
-      rgba(12, 12, 18, .85);
+      radial-gradient(120% 160% at 10% 0%, rgba(168,85,247,.55), transparent 60%),
+      radial-gradient(140% 160% at 95% 25%, rgba(59,130,246,.55), transparent 58%),
+      linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,.04));
     box-shadow:
-      0 10px 25px rgba(0,0,0,.35),
-      inset 0 1px 0 rgba(255,255,255,.14);
-    transition: transform .16s ease, filter .16s ease, border-color .16s ease;
+      0 10px 30px rgba(0,0,0,.45),
+      0 0 0 1px rgba(0,0,0,.35) inset,
+      0 0 0 1px rgba(255,255,255,.06),
+      inset 0 1px 0 rgba(255,255,255,.16);
+    backdrop-filter: blur(10px);
+    transition: transform .16s ease, filter .16s ease, box-shadow .16s ease, border-color .16s ease;
     user-select: none;
 }
 
 .btn-gradient:hover{
     transform: translateY(-1px);
-    filter: brightness(1.06);
-    border-color: rgba(255,255,255,.22);
+    filter: brightness(1.08) saturate(1.05);
+    border-color: rgba(255,255,255,.28);
+    box-shadow:
+      0 14px 40px rgba(0,0,0,.55),
+      0 0 18px rgba(168,85,247,.22),
+      0 0 0 1px rgba(0,0,0,.35) inset,
+      0 0 0 1px rgba(255,255,255,.08),
+      inset 0 1px 0 rgba(255,255,255,.18);
 }
 
 .btn-gradient:active{
     transform: translateY(0px) scale(.99);
+    filter: brightness(1.02);
 }
 
 .btn-gradient-alt{
     background:
-      linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,.06)),
-      radial-gradient(120% 140% at 20% 0%, rgba(34,211,238,.50), transparent 60%),
-      radial-gradient(140% 140% at 90% 20%, rgba(250,204,21,.45), transparent 60%),
-      rgba(12, 12, 18, .85);
+      radial-gradient(120% 160% at 15% 0%, rgba(34,211,238,.52), transparent 60%),
+      radial-gradient(140% 160% at 95% 25%, rgba(250,204,21,.48), transparent 58%),
+      linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,.04));
 }
 
 .hero{
