@@ -1,34 +1,28 @@
-(() => {
-    const header = document.querySelector('.site-header');
-    const toggle = document.querySelector('.nav-toggle');
-    const nav = document.querySelector('#siteNav');
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('navMenu');
 
-    if (!header || !toggle || !nav) return;
-
-    const setOpen = (open) => {
-        header.classList.toggle('is-open', open);
-        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    };
-
-    const isOpen = () => header.classList.contains('is-open');
-
-    toggle.addEventListener('click', () => {
-        setOpen(!isOpen());
+    hamburger.addEventListener('click', function() {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
     });
 
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') setOpen(false);
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+        const isClickInsideHamburger = hamburger.contains(event.target);
+        const isClickInsideMenu = navMenu.contains(event.target);
+        
+        if (!isClickInsideHamburger && !isClickInsideMenu && navMenu.classList.contains('active')) {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        }
     });
 
-    document.addEventListener('click', (e) => {
-        if (!isOpen()) return;
-        if (header.contains(e.target)) return;
-        setOpen(false);
+    // Close menu when pressing Escape key
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape' && navMenu.classList.contains('active')) {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        }
     });
-
-    nav.addEventListener('click', (e) => {
-        const link = e.target.closest('a');
-        if (!link) return;
-        setOpen(false);
-    });
-})();
+});
